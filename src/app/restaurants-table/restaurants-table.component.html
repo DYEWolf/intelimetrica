@@ -10,6 +10,12 @@
     />
   </div>
 
+  <p>
+    You can search by restaurant name and sorting by rating and name clicking at
+    header.
+  </p>
+  <p>Details of restaurant available when click on the name.</p>
+
   <table class="table">
     <thead>
       <tr>
@@ -34,6 +40,7 @@
           <ngb-highlight
             [result]="restaurant.name"
             [term]="restaurantsService.searchTerm"
+            (click)="openModal(restaurant)"
           ></ngb-highlight>
         </td>
         <td>

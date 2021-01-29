@@ -9,9 +9,10 @@ import { NgbdSortableHeader } from './sortable.directive';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, RestaurantsTableComponent, NgbdSortableHeader],
+  declarations: [AppComponent, RestaurantsTableComponent, NgbdSortableHeader, ModalComponent],
   imports: [
     BrowserModule,
     NgbModule,

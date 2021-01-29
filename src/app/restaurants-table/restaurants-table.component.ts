@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { NgbdSortableHeader, SortEvent } from '../sortable.directive';
 import { RestaurantsService } from '../restaurants.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-restaurants-table',
@@ -19,7 +21,10 @@ export class RestaurantsTableComponent implements OnInit {
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(public restaurantsService: RestaurantsService) {}
+  constructor(
+    public restaurantsService: RestaurantsService,
+    public modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {}
 
@@ -33,5 +38,10 @@ export class RestaurantsTableComponent implements OnInit {
 
     this.restaurantsService.sortColumn = column;
     this.restaurantsService.sortDirection = direction;
+  }
+
+  openModal(data) {
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.restaurant = data;
   }
 }

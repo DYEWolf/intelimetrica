@@ -15,8 +15,5 @@ export class AppComponent {
   constructor(public restaurantsService: RestaurantsService) {
     this.restaurants$ = restaurantsService.restaurants$;
     this.total$ = restaurantsService.total$;
-    restaurantsService.getRestaurants().subscribe((res) => {
-      console.log(res);
-    });
   }
 }
