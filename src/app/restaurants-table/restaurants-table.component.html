@@ -14,22 +14,31 @@
     <thead>
       <tr>
         <th scope="col" sortable="rating" (sort)="onSort($event)">Rating</th>
-        <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+        <th scope="col" sortable="name" (sort)="onSort($event)">
+          Restaurant Name
+        </th>
+        <th scope="col">Website</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let restaurant of restaurantsData | async">
         <td>
-          <ngb-highlight
-            [result]="restaurant.rating | number"
-            [term]="restaurantsService.searchTerm"
-          ></ngb-highlight>
+          <ngb-rating
+            [(rate)]="restaurant.rating"
+            [max]="5"
+            [readonly]="true"
+          ></ngb-rating>
         </td>
         <td>
           <ngb-highlight
             [result]="restaurant.name"
             [term]="restaurantsService.searchTerm"
           ></ngb-highlight>
+        </td>
+        <td>
+          <a [href]="restaurant.contact.site" target="_blank">{{
+            restaurant.contact.site
+          }}</a>
         </td>
       </tr>
     </tbody>

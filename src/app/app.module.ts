@@ -8,6 +8,7 @@ import { RestaurantsTableComponent } from './restaurants-table/restaurants-table
 import { NgbdSortableHeader } from './sortable.directive';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, RestaurantsTableComponent, NgbdSortableHeader],
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent],
