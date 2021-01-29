@@ -1,1 +1,33 @@
-<p>restaurants-table works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" sortable="rating" (sort)="onSort($event)">Rating</th>
+      <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let restaurant of restaurantsData | async">
+      <td>
+        <ngb-highlight
+          [result]="restaurant.rating | number"
+          [term]="restaurantsService.searchTerm"
+        ></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight
+          [result]="restaurant.name"
+          [term]="restaurantsService.searchTerm"
+        ></ngb-highlight>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [collectionSize]="(total | async)!"
+    [(page)]="restaurantsService.page"
+    [pageSize]="restaurantsService.pageSize"
+  >
+  </ngb-pagination>
+</div>
