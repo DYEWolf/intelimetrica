@@ -8,3 +8,11 @@
 .search-container {
   margin-top: 20px;
 }
+
+.restaurant-name {
+  cursor: pointer;
+}
+
+.restaurant-name:hover {
+  color: dodgerblue;
+}
