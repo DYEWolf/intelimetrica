@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantsTableComponent } from './restaurants-table/restaurants-table.component';
 import { NgbdSortableHeader } from './sortable.directive';
-import { CommonModule, DecimalPipe, CurrencyPipe } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, RestaurantsTableComponent, NgbdSortableHeader],
-  imports: [BrowserModule, NgbModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent],
 })

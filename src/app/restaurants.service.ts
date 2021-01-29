@@ -32,12 +32,8 @@ function sort(restaurants, column: SortColumn, direction: string) {
   }
 }
 
-function matches(restaurant, term: string, pipe: PipeTransform) {
-  return (
-    restaurant.name.toLowerCase().includes(term.toLowerCase()) ||
-    pipe.transform(restaurant.area).includes(term) ||
-    pipe.transform(restaurant.population).includes(term)
-  );
+function matches(restaurant, term: string) {
+  return restaurant.name.toLowerCase().includes(term.toLowerCase());
 }
 
 @Injectable({
@@ -129,16 +125,13 @@ export class RestaurantsService {
       searchTerm,
     } = this._state;
 
-    // 1. sort
     let restaurants = sort(this.RESTAURANTS, sortColumn, sortDirection);
 
-    // 2. filter
     restaurants = restaurants.filter((restaurant) =>
-      matches(restaurant, searchTerm, this.pipe)
+      matches(restaurant, searchTerm)
     );
     const total = restaurants.length;
 
-    // 3. paginate
     restaurants = restaurants.slice(
       (page - 1) * pageSize,
       (page - 1) * pageSize + pageSize
